@@ -17,7 +17,10 @@ func main() {
 	}
 	log.Print(ints)
 
-	count := countLargerMeasurements(ints)
+	slidingWindow := sumSlidingWindow(ints)
+	log.Printf("Sliding Window Values:, %d", slidingWindow)
+
+	count := countLargerMeasurements(slidingWindow)
 	log.Printf("Count of Measurements:, %d", count)
 }
 
@@ -31,6 +34,22 @@ func countLargerMeasurements(values []int) int {
 			log.Println(values[i])
 			count++
 		}
+	}
+	return count
+}
+
+func sumSlidingWindow(values []int) []int {
+	var count []int
+	for i := 0; i < len(values); i++ {
+		var sumValue int
+		if i == len(values)-2 {
+			break
+		} else {
+			sumValue = values[i] + values[i+1] + values[i+2]
+		}
+		log.Println(sumValue)
+		count = append(count, sumValue)
+
 	}
 	return count
 }
