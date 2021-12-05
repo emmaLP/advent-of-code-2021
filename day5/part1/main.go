@@ -63,24 +63,6 @@ func plotCoordsOnDiagram(coords []string, all, ventsIntersectings map[point]bool
 			}
 		}
 	}
-	//for i := 0; i < len(diagram); i++ {
-	//	for j := 0; j < len(diagram[i]); j++ {
-	//		rangeCoordsAsc := (i >= y1 && i<=y2) && (j >=x1 && j <=x2)
-	//		rangeCoordsDesc := (i <= y1 && i>=y2) && (j <=x1 && j >=x2)
-	//		nonRangeCoords :=
-	//		if rangeCoordsAsc || rangeCoordsDesc {
-	//			value := diagram[i][j]
-	//			if value == "." {
-	//				diagram[i][j] = "1"
-	//			} else {
-	//				valueInt, _ := strconv.Atoi(value)
-	//				diagram[i][j] = strconv.Itoa(valueInt+1)
-	//			}
-	//		}
-	//
-	//	}
-	//}
-	//fmt.Println("Vis Progress:", ventsIntersectings)
 
 }
 
