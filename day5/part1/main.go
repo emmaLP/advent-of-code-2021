@@ -24,12 +24,12 @@ func main() {
 		fmt.Println("Line:", line)
 		coords := strings.Split(line, " -> ")
 		fmt.Println(coords)
-		plotCoordsOnDiagram(coords, all, ventsIntersecting)
+		determineOverlaps(coords, all, ventsIntersecting)
 	}
 	fmt.Println("Answer: ", len(ventsIntersecting))
 }
 
-func plotCoordsOnDiagram(coords []string, all, ventsIntersectings map[point]bool) {
+func determineOverlaps(coords []string, all, ventsIntersectings map[point]bool) {
 	var x1, y1 int
 	var x2, y2 int
 	coord1 := strings.Split(coords[0], ",")
