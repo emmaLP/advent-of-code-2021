@@ -4,12 +4,26 @@ import (
 	"fmt"
 	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
+	"strings"
 )
 
 func main() {
-	absPath, _ := filepath.Abs("day8/input-example.txt")
-	//absPath, _ := filepath.Abs("day8/input.txt")
+	//absPath, _ := filepath.Abs("day8/input-example.txt")
+	absPath, _ := filepath.Abs("day8/input.txt")
 	lines := common.ReadLines(absPath)
-	fmt.Println(lines)
-
+	var outputs []string
+	for _, line := range lines {
+		inputOutputSplit := strings.Split(line, " | ")
+		outputSplits := strings.Split(inputOutputSplit[1], " ")
+		outputs = append(outputs, outputSplits...)
+	}
+	fmt.Println("Outputs: ", outputs, len(outputs))
+	result := 0
+	var lenArry = []int{2, 3, 4, 7}
+	for _, output := range outputs {
+		if common.Contains(lenArry, len(output)) {
+			result += 1
+		}
+	}
+	fmt.Println("Answer: ", result)
 }
