@@ -1,6 +1,7 @@
 package common
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -34,4 +35,20 @@ func SortCharsInStrings(strs []string) []string {
 		strs[pos] = SortString(str)
 	}
 	return strs
+}
+func ParsIntGrid(rows []string, itemDelimiter string) [][]int {
+	grid := make([][]int, len(rows))
+	for i := 0; i < len(rows); i++ {
+		fmt.Println("Processing row", rows[i])
+		if strings.TrimSuffix(strings.TrimSpace(rows[i]), "\n") == "" {
+			continue
+		}
+		columns := strings.Split(rows[i], itemDelimiter)
+		cols, _ := SliceAtoi(columns)
+		grid[i] = cols
+
+	}
+	fmt.Println("Grid completed", grid)
+	return grid
+
 }
