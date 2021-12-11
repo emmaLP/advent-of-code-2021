@@ -43,7 +43,6 @@ func main() {
 }
 
 
-
 func stepIncrement(grid [][]int) {
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[i]); j++ {

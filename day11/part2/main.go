@@ -16,7 +16,7 @@ func main() {
 
 	for step := 0; step < 500; step++ {
 		fcount := 0
-		increment(grid)
+		stepIncrement(grid)
 		
 		var checkFlash func(y, x int, add int)
 		checkFlash = func(y, x int, add int) {
@@ -50,7 +50,7 @@ func main() {
 	}
 }
 
-func increment(grid [][]int) {
+func stepIncrement(grid [][]int) {
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[i]); j++ {
 			if grid[i][j] == -1 {
