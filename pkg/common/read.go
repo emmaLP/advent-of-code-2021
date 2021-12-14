@@ -13,6 +13,5 @@ func ReadLines(path string) []string {
 	defer file.Close()
 
 	data, _ := io.ReadAll(file)
-	log.Println("Data: ", string(data))
 	return strings.Split(string(data), "\n")
 }
