@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
