@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day8/input-example.txt")
+	// absPath, _ := filepath.Abs("day8/input-example.txt")
 	absPath, _ := filepath.Abs("day8/input.txt")
 	lines := common.ReadLines(absPath)
 	var outputs []string
@@ -19,7 +20,7 @@ func main() {
 	}
 	fmt.Println("Outputs: ", outputs, len(outputs))
 	result := 0
-	var lenArry = []int{2, 3, 4, 7}
+	lenArry := []int{2, 3, 4, 7}
 	for _, output := range outputs {
 		if common.Contains(lenArry, len(output)) {
 			result += 1

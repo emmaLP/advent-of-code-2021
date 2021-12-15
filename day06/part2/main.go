@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day6/input-example.txt")
+	// absPath, _ := filepath.Abs("day6/input-example.txt")
 	absPath, _ := filepath.Abs("day6/input.txt")
 	lines := common.ReadLines(absPath)
 	fmt.Println(lines)
@@ -27,7 +28,6 @@ func main() {
 	}
 
 	fmt.Println("Answer:", fishCount)
-
 }
 
 func parseToMap(sa []int) map[int]int {
@@ -48,8 +48,7 @@ func parseToMap(sa []int) map[int]int {
 func simulate(internalTimers map[int]int) map[int]int {
 	newAgeMap := map[int]int{}
 	for key, value := range internalTimers {
-
-		//timer := internalTimers[i]
+		// timer := internalTimers[i]
 
 		if key == 0 {
 			if value6, ok := newAgeMap[6]; ok {
@@ -70,7 +69,6 @@ func simulate(internalTimers map[int]int) map[int]int {
 				newAgeMap[key-1] = value
 			}
 		}
-
 	}
 	//for i := 0; i < numOfNewLanternFishToAdd; i++ {
 	//	internalTimers = append(internalTimers, 8)

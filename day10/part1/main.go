@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 var pairs = map[byte]byte{
@@ -21,13 +22,12 @@ var scores = map[byte]int{
 }
 
 func main() {
-	//absPath, _ := filepath.Abs("day10/input-example.txt")
+	// absPath, _ := filepath.Abs("day10/input-example.txt")
 	absPath, _ := filepath.Abs("day10/input.txt")
 	lines := common.ReadLines(absPath)
 
 	res := 0
 	for _, line := range lines {
-
 		if wrongChar := findIllegalCharacter(line); wrongChar != 0 {
 			res += scores[wrongChar]
 		}

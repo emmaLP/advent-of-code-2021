@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 var chars = map[byte]int{
@@ -27,7 +28,7 @@ func toMask(str string) int {
 }
 
 func main() {
-	//absPath, _ := filepath.Abs("day8/input-example.txt")
+	// absPath, _ := filepath.Abs("day8/input-example.txt")
 	absPath, _ := filepath.Abs("day8/input.txt")
 	lines := common.ReadLines(absPath)
 
@@ -56,7 +57,7 @@ func main() {
 	fmt.Println("Answer: ", result)
 }
 
-func determineNum(n int, solved []string, patterns []string, fn func(pattern string) bool) ([]string, []string) {
+func determineNum(n int, solved, patterns []string, fn func(pattern string) bool) ([]string, []string) {
 	for pos, pattern := range patterns {
 		if fn(pattern) {
 			solved[n] = pattern
@@ -67,7 +68,7 @@ func determineNum(n int, solved []string, patterns []string, fn func(pattern str
 	return solved, patterns
 }
 
-func solveNonUnique(solved []string, patterns []string) []string {
+func solveNonUnique(solved, patterns []string) []string {
 	// 3 == 5 segments, contains 1
 	solved, patterns = determineNum(3, solved, patterns, func(pattern string) bool { return len(pattern) == 5 && common.ContainsChars(pattern, solved[1]) })
 	// 6 == 6 segments, does not contain 1

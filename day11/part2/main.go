@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
@@ -17,9 +18,9 @@ func main() {
 	for step := 0; step < 500; step++ {
 		fcount := 0
 		stepIncrement(grid)
-		
-		var checkFlash func(y, x int, add int)
-		checkFlash = func(y, x int, add int) {
+
+		var checkFlash func(y, x, add int)
+		checkFlash = func(y, x, add int) {
 			if y < 0 || x < 0 || y >= len(grid) || x >= len(grid[y]) {
 				return
 			}
@@ -44,7 +45,7 @@ func main() {
 		}
 
 		if fcount == len(grid)*len(grid[0]) {
-			fmt.Println("Ans:", step + 1)
+			fmt.Println("Ans:", step+1)
 			return
 		}
 	}

@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day14/input-example.txt")
+	// absPath, _ := filepath.Abs("day14/input-example.txt")
 	absPath, _ := filepath.Abs("day14/input.txt")
 	lines := common.ReadLines(absPath)
 
@@ -41,13 +42,13 @@ func getPairInsertions(lines []string) map[string]string {
 func determineElements(pairIns map[string]string, template string, steps int) map[string]int {
 	elementCount := map[string]int{}
 	pairs := map[string]int{}
-	//Determine initial pairs from template
+	// Determine initial pairs from template
 	for i := 0; i < len(template)-1; i++ {
 		first := string(template[i])
 		second := string(template[i+1])
 		pairs[first+second] += 1
 	}
-	//Populate element count with initial template letters
+	// Populate element count with initial template letters
 	for i := 0; i < len(template); i++ {
 		elementCount[string(template[i])] += 1
 	}
@@ -81,6 +82,7 @@ func max(numbers map[string]int) (maxNumber int) {
 	}
 	return maxNumber
 }
+
 func min(numbers map[string]int, initialNum int) (minNumber int) {
 	minNumber = initialNum
 	for _, value := range numbers {

@@ -26,7 +26,7 @@ func main() {
 	var search func(searchStr string, alreadySeen bool)
 	search = func(searchStr string, alreadySeen bool) {
 		currentSeen := seenPath[searchStr]
-	
+
 		if searchStr == "end" {
 			res++
 			return

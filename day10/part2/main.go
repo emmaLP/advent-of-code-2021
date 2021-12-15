@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"sort"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 var pairs = map[byte]byte{
@@ -22,7 +23,7 @@ var scores = map[byte]int{
 }
 
 func main() {
-	//absPath, _ := filepath.Abs("day10/input-example.txt")
+	// absPath, _ := filepath.Abs("day10/input-example.txt")
 	absPath, _ := filepath.Abs("day10/input.txt")
 	lines := common.ReadLines(absPath)
 

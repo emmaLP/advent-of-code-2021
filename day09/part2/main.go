@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day9/input-example.txt")
+	// absPath, _ := filepath.Abs("day9/input-example.txt")
 	absPath, _ := filepath.Abs("day9/input.txt")
 	lines := common.ReadLines(absPath)
 	grid := common.ParsIntGrid(lines, "")

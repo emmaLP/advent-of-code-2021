@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day6/input-example.txt")
+	// absPath, _ := filepath.Abs("day6/input-example.txt")
 	absPath, _ := filepath.Abs("day6/input.txt")
 	lines := common.ReadLines(absPath)
 	fmt.Println(lines)
@@ -17,12 +18,11 @@ func main() {
 	for i := 1; i <= 80; i++ {
 		fmt.Println("Day: ", i)
 		lanternFishInternals = simulate(lanternFishInternals)
-		//fmt.Println("Fishes:", lanternFishInternals)
+		// fmt.Println("Fishes:", lanternFishInternals)
 	}
 
-	//fmt.Println(lanternFishInternals)
+	// fmt.Println(lanternFishInternals)
 	fmt.Println("Answer:", len(lanternFishInternals))
-
 }
 
 func simulate(internalTimers []int) []int {

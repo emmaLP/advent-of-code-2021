@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day13/input-example.txt")
+	// absPath, _ := filepath.Abs("day13/input-example.txt")
 	absPath, _ := filepath.Abs("day13/input.txt")
 	lines := common.ReadLines(absPath)
 	coords, instructions := populateCoordsAndInstructions(lines)
@@ -43,7 +44,6 @@ func main() {
 		}
 	}
 	printCode(maxX, maxY, seen)
-
 }
 
 func printCode(maxX, maxY int, populatedValues map[[2]int]bool) {

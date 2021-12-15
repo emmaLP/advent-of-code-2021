@@ -25,7 +25,7 @@ func main() {
 }
 
 func countLargerMeasurements(values []int) int {
-	var count = 0
+	count := 0
 	for i := 0; i < len(values); i++ {
 		if i == 0 {
 			continue

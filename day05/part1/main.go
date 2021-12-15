@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 type point struct {
@@ -13,7 +14,7 @@ type point struct {
 }
 
 func main() {
-	//absPath, _ := filepath.Abs("day5/input-example.txt")
+	// absPath, _ := filepath.Abs("day5/input-example.txt")
 	absPath, _ := filepath.Abs("day5/input.txt")
 	lines := common.ReadLines(absPath)
 	fmt.Println(lines)
@@ -63,7 +64,6 @@ func determineOverlaps(coords []string, all, ventsIntersectings map[point]bool) 
 			}
 		}
 	}
-
 }
 
 func min(x, y int) int {
@@ -72,6 +72,7 @@ func min(x, y int) int {
 	}
 	return x
 }
+
 func max(x, y int) int {
 	if x < y {
 		return y

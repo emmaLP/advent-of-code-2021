@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	//file, _ := os.Open("input-example.txt")
+	// file, _ := os.Open("input-example.txt")
 	file, _ := os.Open("../input.txt")
 	defer file.Close()
 	fileReader := bufio.NewReader(file)

@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"reflect"
 	"strconv"
 	"strings"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 type NumGrid struct {
@@ -15,7 +16,7 @@ type NumGrid struct {
 }
 
 func main() {
-	//absPath, _ := filepath.Abs("day4/input-example.txt")
+	// absPath, _ := filepath.Abs("day4/input-example.txt")
 	absPath, _ := filepath.Abs("day4/input.txt")
 	lines := common.ReadLines(absPath)
 	fmt.Println(lines)
@@ -48,7 +49,6 @@ func main() {
 	lastBoard := boardsInWinningOrder[len(boardsInWinningOrder)-1]
 	fmt.Println("Last winning board", lastBoard)
 	fmt.Println(calculateResult(lastBoard.grid, lastBoard.lastCallout))
-
 }
 
 func calculateResult(grid [][]int, num int) int {
@@ -83,7 +83,7 @@ func markChecked(num int, grid [][]int) bool {
 
 func checkForBingo(grid [][]int) bool {
 	isBingo := false
-	//Row Matching
+	// Row Matching
 	for i := 0; i < len(grid); i++ {
 		fmt.Println("Grid row to check", grid[i])
 		if isBingo = reflect.DeepEqual(grid[i], []int{-1, -1, -1, -1, -1}); isBingo {
@@ -93,7 +93,7 @@ func checkForBingo(grid [][]int) bool {
 
 	}
 
-	//Column matching
+	// Column matching
 	for colIndex := 0; colIndex < len(grid[0]); colIndex++ {
 		allMarked := true
 		for _, row := range grid {
@@ -132,7 +132,7 @@ func getsBoards(lines []string) []NumGrid {
 	return grids
 }
 
-func parseBingoBoard(str string, lineDelimiter string, itemDelimiter string) NumGrid {
+func parseBingoBoard(str, lineDelimiter, itemDelimiter string) NumGrid {
 	fmt.Println("Line to make as a board", str)
 	rows := strings.Split(str, lineDelimiter)
 	fmt.Println()
@@ -151,7 +151,6 @@ func parseBingoBoard(str string, lineDelimiter string, itemDelimiter string) Num
 	}
 	fmt.Println("Board structure completed", grid)
 	return NumGrid{grid: grid}
-
 }
 
 func sliceAtoi(sa []string) ([]int, error) {

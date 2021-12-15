@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/emmalp/advent-of-code-2021/pkg/common"
 	"path/filepath"
 	"strconv"
+
+	"github.com/emmalp/advent-of-code-2021/pkg/common"
 )
 
 func main() {
-	//absPath, _ := filepath.Abs("day3/part1/input-example.txt")
+	// absPath, _ := filepath.Abs("day3/part1/input-example.txt")
 	absPath, _ := filepath.Abs("day3/input.txt")
 	lines := common.ReadLines(absPath)
 	oxygen := filter(lines, 0, true)

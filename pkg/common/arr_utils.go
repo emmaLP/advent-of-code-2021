@@ -19,8 +19,8 @@ func SliceAtoi(sa []string) ([]int, error) {
 		si = append(si, i)
 	}
 	return si, nil
-
 }
+
 func Contains(s []int, e int) bool {
 	for _, a := range s {
 		if a == e {
@@ -36,6 +36,7 @@ func SortCharsInStrings(strs []string) []string {
 	}
 	return strs
 }
+
 func ParsIntGrid(rows []string, itemDelimiter string) [][]int {
 	grid := make([][]int, len(rows))
 	for i := 0; i < len(rows); i++ {
@@ -49,5 +50,4 @@ func ParsIntGrid(rows []string, itemDelimiter string) [][]int {
 	}
 	fmt.Println("Grid completed", grid)
 	return grid
-
 }
