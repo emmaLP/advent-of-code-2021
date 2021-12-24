@@ -35,14 +35,14 @@ func main() {
 			j, yAdd := zVal.start, zVal.end
 			difference := xAdd + yAdd
 			if difference < 0 {
-				modelNumber[i] = 9 + difference
-				modelNumber[j] = 9
+				modelNumber[i] = 1
+				modelNumber[j] = 1 - difference
 			} else if difference > 0 {
-				modelNumber[i] = 9
-				modelNumber[j] = 9 - difference
+				modelNumber[i] = 1 + difference
+				modelNumber[j] = 1
 			} else {
-				modelNumber[i] = 9
-				modelNumber[j] = 9
+				modelNumber[i] = 1
+				modelNumber[j] = 1
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 package common
 
 import (
+	"bytes"
 	"fmt"
 	"strconv"
 	"strings"
@@ -50,4 +51,16 @@ func ParsIntGrid(rows []string, itemDelimiter string) [][]int {
 	}
 	fmt.Println("Grid completed", grid)
 	return grid
+}
+
+func IntSliceToString(arr []int, delimiter string) string {
+	var buffer bytes.Buffer
+	for i := 0; i < len(arr); i++ {
+		buffer.WriteString(strconv.Itoa(arr[i]))
+		if i != len(arr)-1 {
+			buffer.WriteString(delimiter)
+		}
+	}
+
+	return buffer.String()
 }
