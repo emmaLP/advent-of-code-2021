@@ -70,10 +70,8 @@ func calculateMinEnergy(initState State) (minScore int) {
 	h[0] = StateEnergy{initState, 0}
 
 	heap.Init(&h)
-	fmt.Println("Heap Length", h.Len())
 	for h.Len() > 0 {
 		current := heap.Pop(&h).(StateEnergy)
-		fmt.Println("Current State:", current)
 		for _, se := range nextStates(current.Value, current.Energy) {
 			s := se.Value
 			e := se.Energy
@@ -90,11 +88,19 @@ func calculateMinEnergy(initState State) (minScore int) {
 }
 
 func nextStates(s State, startEnergy int) []StateEnergy {
+	// Check everything in hallway to see if it can go home
+	ret := nextHallwayStates(s, startEnergy)
+
+	// Run through all pods to see if they can evolve
+	ret = append(ret, nextPodStates(s, startEnergy)...)
+
+	return ret
+}
+
+func nextHallwayStates(s State, startEnergy int) []StateEnergy {
 	ret := make([]StateEnergy, 0)
 	var energy int
-
-	// Check everything in hallway to see if it can go home
-outerHallway:
+outer:
 	for pos := 0; pos < 7; pos++ {
 		c := s.Hallway[pos]
 		if c == 0 {
@@ -106,7 +112,8 @@ outerHallway:
 		for row := 0; row < 2; row++ {
 			if s.Pods[podDesired][row] != c && s.Pods[podDesired][row] != 0 {
 				// Pod is not ready
-				continue outerHallway
+				//break
+				continue outer
 			}
 		}
 
@@ -115,13 +122,15 @@ outerHallway:
 		if pos < stopping {
 			for i := pos + 1; i < stopping; i++ {
 				if s.Hallway[i] != 0 {
-					continue outerHallway
+					//break
+					continue outer
 				}
 			}
 		} else {
 			for i := pos - 1; i >= stopping; i-- {
 				if s.Hallway[i] != 0 {
-					continue outerHallway
+					//break
+					continue outer
 				}
 			}
 		}
@@ -140,13 +149,15 @@ outerHallway:
 		nState.Pods[podDesired][endRow] = c
 		ret = append(ret, StateEnergy{nState, energy})
 	}
-
 	if len(ret) > 0 {
 		return ret
 	}
+	return ret
+}
 
-	// Run through all pods to see if they can evolve
-outerPods:
+func nextPodStates(s State, startEnergy int) []StateEnergy {
+	ret := make([]StateEnergy, 0)
+	var energy int
 	for pod := 0; pod < 4; pod++ {
 		endState := 'A' + rune(pod)
 		for row := 0; row < 2; row++ {
@@ -160,7 +171,7 @@ outerPods:
 					}
 				}
 				if skip {
-					continue outerPods
+					break
 				}
 			}
 
@@ -195,11 +206,10 @@ outerPods:
 					}
 				}
 				// Can't move the letter under this one
-				continue outerPods
+				break
 			}
 		}
 	}
-
 	return ret
 }
 

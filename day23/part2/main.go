@@ -82,7 +82,6 @@ func calculateMinEnergy(initState State) (minScore int) {
 	fmt.Println("Heap Length", h.Len())
 	for h.Len() > 0 {
 		current := heap.Pop(&h).(StateEnergy)
-		fmt.Println("Current State:", current)
 		for _, se := range nextStates(current.Value, current.Energy) {
 			s := se.Value
 			e := se.Energy
@@ -99,10 +98,18 @@ func calculateMinEnergy(initState State) (minScore int) {
 }
 
 func nextStates(s State, startEnergy int) []StateEnergy {
+	// Check everything in hallway to see if it can go home
+	ret := nextHallwayStates(s, startEnergy)
+
+	// Run through all pods to see if they can evolve
+	ret = append(ret, nextPodStates(s, startEnergy)...)
+
+	return ret
+}
+
+func nextHallwayStates(s State, startEnergy int) []StateEnergy {
 	ret := make([]StateEnergy, 0)
 	var energy int
-
-	// Check everything in hallway to see if it can go home
 outerHallway:
 	for pos := 0; pos < 7; pos++ {
 		c := s.Hallway[pos]
@@ -154,9 +161,12 @@ outerHallway:
 	if len(ret) > 0 {
 		return ret
 	}
+	return ret
+}
 
-	// Run through all pods to see if they can evolve
-outerPods:
+func nextPodStates(s State, startEnergy int) []StateEnergy {
+	ret := make([]StateEnergy, 0)
+	var energy int
 	for pod := 0; pod < 4; pod++ {
 		endState := 'A' + rune(pod)
 		for row := 0; row < 4; row++ {
@@ -170,7 +180,7 @@ outerPods:
 					}
 				}
 				if skip {
-					continue outerPods
+					break
 				}
 			}
 
@@ -208,11 +218,10 @@ outerPods:
 					}
 				}
 				// Can't move the letter under this one
-				continue outerPods
+				break
 			}
 		}
 	}
-
 	return ret
 }
 
