@@ -10,6 +10,7 @@ import (
 func ReadLines(path string) []string {
 	return strings.Split(ReadFile(path), "\n")
 }
+
 func ReadFile(path string) string {
 	file, err := os.Open(path)
 	log.Println("Err:", err)
