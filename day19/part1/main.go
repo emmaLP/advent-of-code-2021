@@ -14,40 +14,30 @@ func main() {
 	absPath, _ := filepath.Abs("day19/input.txt")
 	parts := strings.Split(common.ReadFile(absPath), "\n\n")
 
-	locs := make([][][3]int, len(parts))
-	for i, part := range parts {
-		lines := strings.Split(part, "\n")[1:]
-		locs[i] = make([][3]int, len(lines))
-		for j, line := range lines {
-			ps := strings.Split(line, ",")
-			for k, p := range ps {
-				locs[i][j][k], _ = strconv.Atoi(p)
-			}
-		}
-	}
+	locations := parseInput(parts)
 
-	full := locs[0]
+	full := locations[0]
 	fullMap := map[[3]int]bool{}
 	for _, pt := range full {
 		fullMap[pt] = true
 	}
-	done := map[int]bool{}
-	done[0] = true
+	processed := map[int]bool{}
+	processed[0] = true
 
-	for len(done) < len(locs) {
-		for i := 1; i < len(locs); i++ {
-			if done[i] {
+	for len(processed) < len(locations) {
+		for i := 1; i < len(locations); i++ {
+			if processed[i] {
 				continue
 			}
 
-			offset, orient, ok := matchPair(full, locs[i])
+			offset, orient, ok := matchPair(full, locations[i])
 			if !ok {
 				continue
 			}
 
-			done[i] = true
+			processed[i] = true
 
-			for _, pt := range locs[i] {
+			for _, pt := range locations[i] {
 				opt := add(rotPoint(pt, orient), offset)
 				if _, ok := fullMap[opt]; !ok {
 					full = append(full, opt)
@@ -85,6 +75,21 @@ func init() {
 	for k := range os {
 		orientations = append(orientations, k)
 	}
+}
+
+func parseInput(parts []string) (locations [][][3]int) {
+	locations = make([][][3]int, len(parts))
+	for i, part := range parts {
+		lines := strings.Split(part, "\n")[1:]
+		locations[i] = make([][3]int, len(lines))
+		for j, line := range lines {
+			ps := strings.Split(line, ",")
+			for k, p := range ps {
+				locations[i][j][k], _ = strconv.Atoi(p)
+			}
+		}
+	}
+	return 
 }
 
 func rotPoint(pt [3]int, orient [3]int) [3]int {
